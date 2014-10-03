@@ -1,0 +1,14 @@
+{
+  "name": "SMS Parking SOfia",
+  "description": "Send SMS for parking in blue and green zones in Sofia.",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/images/app_icon_128.png"
+  },
+  "version": "0.1",
+  "developer": {
+    "name": "Milen Petrinski - Gonzo",
+    "url": "http://greatgonzo.net"
+  },
+  "default_locale": "en"
+}

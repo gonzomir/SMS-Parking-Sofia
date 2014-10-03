@@ -2,11 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
     <title>SMS Parking Sofia</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="style/layout.css" rel="stylesheet" type="text/css">
+    <link href="style/headers.css" rel="stylesheet" type="text/css">
+    <link href="style/input_areas.css" rel="stylesheet" type="text/css">
+    <link href="style/edit_mode.css" rel="stylesheet" type="text/css">
+    <link href="style/buttons.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <!-- page content -->
+
+    <section role="region" id="index" class="vbox fit" data-position="current">
+      <header class="fixed">
+        <menu type="toolbar">
+          <button id="btn-add-car"><span class="icon icon-add">add</span></button>
+        </menu>
+        <h1>SMS Parking Sofia</h1>
+      </header>
+      <div class="content">
+        <p id="intro">Start by adding your car details.</p>
+        <ul>
+          <li>
+            <p class="large">
+      </div>
+    </section>
+
+    <section role="region" id="add-car" aria-hidden="true" data-position="right">
+      <header>
+        <button id="btn-add-car-back"><span class="icon icon-close">close</span></button>
+        <menu type="toolbar"><button>done</button></menu>
+        <h1>Add new car</h1>
+      </header>
+      <form class="content">
+        <p>
+          <input type="text" placeholder="Car name" required="">
+          <button type="reset">Clear</button>
+        </p>
+        <p>
+          <input type="text" placeholder="Registration number" value="" required="">
+          <button type="reset">Clear</button>
+        </p>
+      </form>
+    </section>
+
+
+    <script src="script.js"></script>
   </body>
 </html>
