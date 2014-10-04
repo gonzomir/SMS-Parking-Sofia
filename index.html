@@ -21,26 +21,33 @@
         <h1>SMS Parking Sofia</h1>
       </header>
       <div class="content">
-        <p id="intro">Start by adding your car details.</p>
-        <ul>
-          <li>
-            <p class="large">
+        <div id="intro">
+          <p>Start by adding your car details.</p>
+          <button id="btn-start">Add your car</button>
+        </div>
+        <ul id="car-list" aria-hidden="true">
+          <li class="template">
+            <p class="large">Car name</p>
+            <button class="green-zone">Green zone</button>
+            <button class="blue-zone">Blue zone</button>
+          </li>
+        </ul>
       </div>
     </section>
 
     <section role="region" id="add-car" aria-hidden="true" data-position="right">
       <header>
         <button id="btn-add-car-back"><span class="icon icon-close">close</span></button>
-        <menu type="toolbar"><button>done</button></menu>
+        <menu type="toolbar"><button id="btn-add-done" type="submit" form="form-add-car">done</button></menu>
         <h1>Add new car</h1>
       </header>
-      <form class="content">
+      <form class="content" id="form-add-car">
         <p>
-          <input type="text" placeholder="Car name" required="">
+          <input type="text" name="car-name" placeholder="Car name" required="">
           <button type="reset">Clear</button>
         </p>
         <p>
-          <input type="text" placeholder="Registration number" value="" required="">
+          <input type="text" name="car-plate" placeholder="Registration number" patern="[A-Z]{1,2}[0-9]{4,6}[A-Z]{0,2}" value="" required="">
           <button type="reset">Clear</button>
         </p>
       </form>

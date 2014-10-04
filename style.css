@@ -48,6 +48,10 @@ section[role="region"] > header.fixed:first-child + .content {
   padding: 1.5rem;
 }
 
+.content p {
+  margin-bottom: 1.5rem;
+}
+
 section[role="region"] .content header {
   margin: 1.5rem -1.5rem;
 }
@@ -180,4 +184,19 @@ section[role="region"][data-position="right"] {
 @-webkit-keyframes leftToCurrent {
   0%   { -webkit-transform: translateX(-100%); }
   100% { -webkit-transform: translateX(0); }
+}
+
+
+#car-list, .template {
+  display: none;
+}
+
+.blue-zone {
+  background-color: #00AACC;
+  color: white;
+}
+
+.green-zone {
+  background-color: #5F9B0A;
+  color: white;
 }
