@@ -15,7 +15,7 @@ document.querySelector('#btn-add-car-back').addEventListener ('click', function 
 });
 
 
-var cars = JSON.parse(localStorage.getItem('cars')),
+var cars = JSON.parse(localStorage.getItem('cars')) || [],
     intro = document.querySelector('#intro'),
     list = document.querySelector('#car-list'),
     template = document.querySelector('.template');
@@ -52,7 +52,6 @@ else{
 document.getElementById('form-add-car').addEventListener ('submit', function (e) {
   e.preventDefault();
   var car = {};
-  cars = cars || [];
   for(i = 0, l = this.elements.length; i < l; i++){
     if(this.elements[i].name && this.elements[i].value){
       car[this.elements[i].name] = this.elements[i].value;
@@ -67,3 +66,31 @@ document.getElementById('form-add-car').addEventListener ('submit', function (e)
   mainPanel.removeAttribute('aria-hidden');
 });
 
+
+list.addEventListener("click", function(e) {
+  console.log(e.target.className);
+  var b = e.target,
+      phone = '',
+      plate = b.dataset.car;
+  if(b.nodeName == 'BUTTON'){
+    if(b.className == 'blue-zone'){
+      phone = '1303';
+    }
+    else if (b.className == 'green-zone'){
+      phone = '1302';
+    }
+    if(navigator.mozApps && MozActivity){
+      new MozActivity({
+        name: "new", // Possible compose-sms in future versions
+        data: {
+          type: "websms/sms",
+          number: phone,
+          body: plate
+        }
+      });
+    }
+    else{
+      window.open('','sms://'+phone+'?body='+plate);
+    }
+  }
+}, true);

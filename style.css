@@ -186,6 +186,10 @@ section[role="region"][data-position="right"] {
   100% { -webkit-transform: translateX(0); }
 }
 
+input {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 #car-list, .template {
   display: none;
