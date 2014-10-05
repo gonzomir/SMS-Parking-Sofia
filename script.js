@@ -94,7 +94,7 @@ list.addEventListener("click", function(e) {
     else if (b.className == 'green-zone'){
       phone = '1303';
     }
-    if(navigator.mozApps && MozActivity){
+    if(navigator.mozApps && typeof MozActivity !== 'undefined'){
       new MozActivity({
         name: "new", // Possible compose-sms in future versions
         data: {
@@ -105,7 +105,7 @@ list.addEventListener("click", function(e) {
       });
     }
     else{
-      window.open('','sms://'+phone+'?body='+plate);
+      location.href = 'sms:'+phone+'?body='+plate;
     }
   }
 }, true);
@@ -113,13 +113,13 @@ list.addEventListener("click", function(e) {
 confirmPanel.querySelector('button.danger').addEventListener('click', function(){
   plate = this.dataset.plate;
   cars = cars.filter(function(car, i, array){
-    if(car['car-plate'] == plate){
+    if(car['car-plate'] == plate || car['car-plate'] == undefined){
       return false;
     }
     return true;
   });
   localStorage.setItem('cars', JSON.stringify(cars));
-  if(cars.lenth > 0){
+  if(cars.length > 0){
     showCars();
   }
   else {
@@ -132,7 +132,8 @@ confirmPanel.querySelector('button.danger').addEventListener('click', function()
 
 var confirmButtons = confirmPanel.querySelectorAll('button');
 for(var i = 0, l = confirmButtons.length; i < l; i++){
-  confirmButtons[i].addEventListener('click', function(){
+  confirmButtons[i].addEventListener('click', function(e){
+    e.preventDefault();
     mainPanel.className = 'current';
     mainPanel.removeAttribute('aria-hidden');
     confirmPanel.className = '';

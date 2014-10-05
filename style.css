@@ -25,22 +25,14 @@ section[role="region"] > header.fixed:first-child {
   width: 100%;
 }
 
-section[role="region"] > header.fixed:first-child + .content {
-  margin-top: 5rem;
-}
-
 .scrollable {
-  overflow: scroll;
-  height: 100%;
+  position: relative;
+  top: 5rem;
+  height: calc(100% - 5rem);
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  position: relative;
-}
-
-.scrollable.header {
-  height: calc(100% - 5rem);
-  top: 5rem;
+  overflow: scroll;
 }
 
 /* Setting proper paddings and margins */
@@ -182,16 +174,6 @@ section[role="region"][data-position="right"] {
   100% { -webkit-transform: translateX(0); }
 }
 
-.scrollable {
-  overflow: scroll;
-  height: calc(100% - 5rem);
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  position: relative;
-}
-
-
 #intro p {
   margin-bottom: 1.5rem;
 }
@@ -231,7 +213,7 @@ li aside button {
   min-height: 0;
   vertical-align: top;
   -moz-box-sizing: border-box;
-  text-indent: 110%;
+  text-indent: 3rem;
 }
 
 li aside button:before {
