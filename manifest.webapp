@@ -10,5 +10,11 @@
     "name": "Milen Petrinski - Gonzo",
     "url": "http://greatgonzo.net"
   },
-  "default_locale": "en"
+  "default_locale": "en",
+  "locales": {
+    "bg": {
+      "name" : "SMS Паркиране в София",
+      "description" : "Лесно изпращане на SMS за паркиране в синя и зелена зона в София."
+    }
+  }
 }

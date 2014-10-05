@@ -140,3 +140,4 @@ for(var i = 0, l = confirmButtons.length; i < l; i++){
     confirmPanel.setAttribute('aria-hidden', 'true');
   });
 }
+

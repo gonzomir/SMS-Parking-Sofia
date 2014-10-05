@@ -11,61 +11,63 @@
     <link href="style/confirm.css" rel="stylesheet" type="text/css">
     <link href="style/buttons.css" rel="stylesheet" type="text/css">
     <link href="style/icons.css" rel="stylesheet" type="text/css">
+    <link rel="resource" type="application/l10n" href="locales/locales.ini">
   </head>
   <body>
 
     <section role="region" id="index" class="vbox fit" data-position="current">
       <header class="fixed">
         <menu type="toolbar">
-          <button id="btn-add-car"><span class="icon icon-add">add car</span></button>
+          <button id="btn-add-car"><span class="icon icon-add" data-l10n-id="add-car">add your car</span></button>
         </menu>
-        <h1>SMS Parking Sofia</h1>
+        <h1 data-l10n-id="app-heading">SMS Parking Sofia</h1>
       </header>
       <div class="content scrollable">
         <div id="intro">
-          <p>Start by adding your car details.</p>
-          <button id="btn-start">Add your car</button>
+          <p data-l10n-id="start-message">Start by adding your car details.</p>
+          <button id="btn-start" data-l10n-id="add-car">Add your car</button>
         </div>
         <ul id="car-list" aria-hidden="true">
           <li class="template">
             <aside class="pack-end">
-              <button class="gaia-icon icon-delete">delete</button>
+              <button class="gaia-icon icon-delete" data-l10n-id="delete">delete</button>
             </aside>
             <p class="large">Car name</p>
-            <button class="green-zone">Green zone</button>
-            <button class="blue-zone">Blue zone</button>
+            <button class="green-zone" data-l10n-id="green-zone">Green zone</button>
+            <button class="blue-zone" data-l10n-id="blue-zone">Blue zone</button>
           </li>
         </ul>
       </div>
     </section>
     <section role="region" id="add-car" aria-hidden="true" data-position="right">
       <header>
-        <button id="btn-add-car-back"><span class="icon icon-close">close</span></button>
-        <menu type="toolbar"><button id="btn-add-done" type="submit" form="form-add-car">done</button></menu>
-        <h1>Add new car</h1>
+        <button id="btn-add-car-back"><span class="icon icon-close" data-l10n-id="close">close</span></button>
+        <menu type="toolbar"><button id="btn-add-done" type="submit" form="form-add-car" data-l10n-id="done">done</button></menu>
+        <h1 data-l10n-id="add-car-heading">Add new car</h1>
       </header>
       <form class="content" id="form-add-car">
         <p>
           <input type="text" name="car-name" placeholder="Car name" required="">
-          <button type="reset">Clear</button>
+          <button type="reset" data-l10n-id="clear">Clear</button>
         </p>
         <p>
           <input type="text" name="car-plate" placeholder="Registration number" patern="[A-Z]{1,2}[0-9]{4,6}[A-Z]{0,2}" value="" required="">
-          <button type="reset">Clear</button>
+          <button type="reset" data-l10n-id="clear">Clear</button>
         </p>
       </form>
     </section>
     <form role="dialog" id="confirm-delete" data-type="confirm" aria-hidden="true" data-position="right">
       <section>
-        <h1>Confirmation</h1><!-- this heading is optional -->
-        <p>Are you sure you want to delete this car data?</p>
+        <h1 data-l10n-id="delete-confirmation-heading">Confirmation</h1><!-- this heading is optional -->
+        <p data-l10n-id="delete-confirmation-text">Are you sure you want to delete this car data?</p>
       </section>
       <menu>
-        <button>Cancel</button>
-        <button class="danger">Delete</button>
+        <button data-l10n-id="cancel">Cancel</button>
+        <button class="danger" data-l10n-id="delete">Delete</button>
       </menu>
     </form>
 
+    <script src="l10n.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
