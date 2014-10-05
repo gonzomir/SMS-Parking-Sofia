@@ -48,10 +48,6 @@ section[role="region"] > header.fixed:first-child + .content {
   padding: 1.5rem;
 }
 
-.content p {
-  margin-bottom: 1.5rem;
-}
-
 section[role="region"] .content header {
   margin: 1.5rem -1.5rem;
 }
@@ -186,6 +182,20 @@ section[role="region"][data-position="right"] {
   100% { -webkit-transform: translateX(0); }
 }
 
+.scrollable {
+  overflow: scroll;
+  height: calc(100% - 5rem);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  position: relative;
+}
+
+
+#intro p {
+  margin-bottom: 1.5rem;
+}
+
 input {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -203,4 +213,30 @@ input {
 .green-zone {
   background-color: #5F9B0A;
   color: white;
+}
+
+li aside {
+  float: right;
+  margin: 0 0 0 0.5rem;
+  text-align: right;
+}
+
+li aside button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 2em;
+  height: 3rem;
+  min-height: 0;
+  vertical-align: top;
+  -moz-box-sizing: border-box;
+  text-indent: 110%;
+}
+
+li aside button:before {
+  text-indent: 0;
+  top: .5rem;
+  left: 0;
+  font-style: normal;
 }

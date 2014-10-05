@@ -1,6 +1,8 @@
 //input areas
 var mainPanel = document.querySelector('#index'),
-    addPanel = document.querySelector('#add-car');
+    addPanel = document.querySelector('#add-car'),
+    confirmPanel = document.querySelector('#confirm-delete');
+
 document.querySelector('#btn-add-car').addEventListener ('click', function () {
   addPanel.className = 'current';
   addPanel.removeAttribute('aria-hidden');
@@ -25,15 +27,21 @@ function showCars(){
   intro.setAttribute('aria-hidden', true);
   list.style.display = 'block';
   list.removeAttribute('aria-hidden');
+  var children = list.querySelectorAll('li:not(.template)');
+  for(var i = 0, l = children.length; i < l; i++){
+    list.removeChild(children[i]);
+  }
   for(var i = 0, l = cars.length; i < l; i++){
-    var row = template.cloneNode(true);
-    row.className = '';
-    row.querySelector('p.large').innerHTML = cars[i]['car-plate'];
-    var buttons = row.querySelectorAll('button');
-    for(var j = 0, bl = buttons.length; j < bl; j++){
-      buttons[j].dataset.car = cars[i]['car-plate']
+    if(cars[i]){
+      var row = template.cloneNode(true);
+      row.className = '';
+      row.querySelector('p:first-of-type').innerHTML = cars[i]['car-name'] + ' <small>' + cars[i]['car-plate'] + '</small>';
+      var buttons = row.querySelectorAll('button');
+      for(var j = 0, bl = buttons.length; j < bl; j++){
+        buttons[j].dataset.car = cars[i]['car-plate']
+      }
+      list.appendChild(row);
     }
-    list.appendChild(row);
   }
 }
 
@@ -68,16 +76,23 @@ document.getElementById('form-add-car').addEventListener ('submit', function (e)
 
 
 list.addEventListener("click", function(e) {
-  console.log(e.target.className);
   var b = e.target,
       phone = '',
       plate = b.dataset.car;
   if(b.nodeName == 'BUTTON'){
+    if(b.classList.contains('icon-delete')){
+      confirmPanel.className = 'current';
+      confirmPanel.removeAttribute('aria-hidden');
+      mainPanel.className = 'left';
+      mainPanel.setAttribute('aria-hidden', 'true');
+      confirmPanel.querySelector('button.danger').dataset.plate = plate;
+      return;
+    }
     if(b.className == 'blue-zone'){
-      phone = '1303';
+      phone = '1302';
     }
     else if (b.className == 'green-zone'){
-      phone = '1302';
+      phone = '1303';
     }
     if(navigator.mozApps && MozActivity){
       new MozActivity({
@@ -94,3 +109,33 @@ list.addEventListener("click", function(e) {
     }
   }
 }, true);
+
+confirmPanel.querySelector('button.danger').addEventListener('click', function(){
+  plate = this.dataset.plate;
+  cars = cars.filter(function(car, i, array){
+    if(car['car-plate'] == plate){
+      return false;
+    }
+    return true;
+  });
+  localStorage.setItem('cars', JSON.stringify(cars));
+  if(cars.lenth > 0){
+    showCars();
+  }
+  else {
+    intro.style.display = 'block';
+    intro.removeAttribute('aria-hidden');
+    list.style.display = 'none';
+    list.setAttribute('aria-hidden', true);
+  }
+}, true);
+
+var confirmButtons = confirmPanel.querySelectorAll('button');
+for(var i = 0, l = confirmButtons.length; i < l; i++){
+  confirmButtons[i].addEventListener('click', function(){
+    mainPanel.className = 'current';
+    mainPanel.removeAttribute('aria-hidden');
+    confirmPanel.className = '';
+    confirmPanel.setAttribute('aria-hidden', 'true');
+  });
+}
