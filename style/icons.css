@@ -5,14 +5,27 @@
 
 .gaia-icon {
   position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  text-indent: 3rem;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .gaia-icon:before {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 3rem;
   height: 3rem;
   font-family: 'gaia-icons';
   font-size: 3rem;
+  font-style: normal;
+  line-height: 3rem;
+  text-indent: 0;
+  text-align: center;
 }
 
 .icon-browsing:before {
