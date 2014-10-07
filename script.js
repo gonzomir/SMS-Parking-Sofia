@@ -59,6 +59,9 @@ else{
 
 document.getElementById('form-add-car').addEventListener ('submit', function (e) {
   e.preventDefault();
+  if(!this.checkValidity()){
+    return;
+  }
   var car = {};
   for(i = 0, l = this.elements.length; i < l; i++){
     if(this.elements[i].name && this.elements[i].value){
@@ -138,6 +141,14 @@ for(var i = 0, l = confirmButtons.length; i < l; i++){
     mainPanel.removeAttribute('aria-hidden');
     confirmPanel.className = '';
     confirmPanel.setAttribute('aria-hidden', 'true');
-  });
+  }, true);
 }
 
+var clearButtons = addPanel.querySelectorAll('button[type=reset]');
+for(var i = 0, l = clearButtons.length; i < l; i++){
+  clearButtons[i].addEventListener('mousedown', function(e){
+    e.preventDefault();
+    this.previousSibling.value = '';
+    this.previousSibling.focus();
+  }, true);
+}

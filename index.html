@@ -47,12 +47,10 @@
       </header>
       <form class="content" id="form-add-car">
         <p>
-          <input type="text" name="car-name" placeholder="Car name" required="">
-          <button type="reset" data-l10n-id="clear">Clear</button>
+          <input type="text" name="car-name" placeholder="Car name" required=""><button type="reset" data-l10n-id="clear">Clear</button>
         </p>
         <p>
-          <input type="text" name="car-plate" placeholder="Registration number" patern="[A-Z]{1,2}[0-9]{4,6}[A-Z]{0,2}" value="" required="">
-          <button type="reset" data-l10n-id="clear">Clear</button>
+          <input type="text" name="car-plate" placeholder="Registration number" pattern="[A-Z0-9\-\s]+" value="" required=""><button type="reset" data-l10n-id="clear">Clear</button>
         </p>
       </form>
     </section>
